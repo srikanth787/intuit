@@ -1,0 +1,23 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Parameters": {
+	  "domain": {
+		  "Description": "Enter Domain name .",
+			  "Type": "String"
+		}
+   },
+  "Resources" : {
+    "DNS": {
+      "Type": "AWS::Route53::HostedZone",
+        "Properties": {
+          "HostedZoneConfig": {
+            "Comment": { "Fn::Join": ["", [
+		          "hosted zone for", {"Ref": "domain"}
+		          ]]
+	           }
+          },
+          "Name": { "Ref" : "domain"}
+	      }
+	 }
+}
+}
